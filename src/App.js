@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import { DataProvider } from "./DataContext";
+import Display from "./components/Display";
+import Hero from "./components/Hero";
 function App() {
+  const [update, setUpdate] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+      <div>
+        <div>
+          <Navbar />
+          <Hero />
+
+          <Display update={update} setUpdate={setUpdate} />
+        </div>
+        <div className="flex justify-evenly"></div>
+      </div>
+    </DataProvider>
   );
 }
 
